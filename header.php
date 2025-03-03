@@ -29,14 +29,14 @@
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="logo">
                         <div class="site-logo">
-                            <a href="index.html" class="js-logo-clone">Pharma</a>
+                            <a href="index.php" class="js-logo-clone">Pharma</a>
                         </div>
                     </div>
                     <div class="main-nav d-none d-lg-block">
                         <nav class="site-navigation text-right text-md-center" role="navigation">
                             <ul class="site-menu js-clone-nav d-none d-lg-block">
-                                <li class="active"><a href="index.html">Home</a></li>
-                                <li><a href="shop.html">Store</a></li>
+                                <li class="active"><a href="index.php">Home</a></li>
+                                <li><a href="shop.php">Store</a></li>
                                 <li class="has-children">
                                     <a href="#">Dropdown</a>
                                     <ul class="dropdown">
@@ -78,9 +78,9 @@
                             <span class="icon-user" style="font-size: 20px;"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="profile.html">Profile</a>
+                            <a class="dropdown-item" href="profile.php">Profile</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="login.html">Logout</a>
+                            <a class="dropdown-item" href="deconnexion.php">Logout</a>
                         </div>
                     </div>
                 </div>

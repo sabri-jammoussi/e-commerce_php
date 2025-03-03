@@ -1,3 +1,44 @@
+<?php
+session_start(); // Start the session
+include('config.php');
+
+$cnx = new connexion();
+$pdo = $cnx->CNXbase();
+$error = [];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['prenom']) && !empty($_POST['nom'])) {
+
+        $prenom = htmlspecialchars($_POST['prenom']);
+        $nom = htmlspecialchars($_POST['nom']);
+        $email = htmlspecialchars($_POST['email']);
+        $password = $_POST['password'];
+        $role = isset($_POST['role']) ? $_POST['role'] : 'client';
+
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        try {
+            $stmt = $pdo->prepare("SELECT id FROM inscription WHERE email = ?");
+            $stmt->execute([$email]);
+            if ($stmt->rowCount() > 0) {
+                $error[] = "Utilisateur existe déjà !";
+            } else {
+                $stmt = $pdo->prepare("INSERT INTO inscription (prenom, nom, email, password, role) VALUES (?, ?, ?, ?, ?)");
+                if ($stmt->execute([$prenom, $nom, $email, $hashed_password, $role])) {
+                    header("Location: index.html");
+                    exit();
+                } else {
+                    $error[] = "Erreur lors de l'inscription.";
+                }
+            }
+        } catch (Exception $e) {
+            $error[] = "Erreur: " . $e->getMessage();
+        }
+    } else {
+        $error[] = "Veuillez remplir tous les champs.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -157,49 +198,3 @@
 </body>
 
 </html>
-<?php
-session_start(); // Start the session
-
-include('config.php');
-$cnx = new connexion();
-$pdo = $cnx->CNXbase();
-$error = [];
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['prenom']) && !empty($_POST['nom'])) {
-
-        $prenom = htmlspecialchars($_POST['prenom']);
-        $nom = htmlspecialchars($_POST['nom']);
-        $email = htmlspecialchars($_POST['email']);
-        $password = $_POST['password']; // Plain password input (no hashing here)
-        $role = isset($_POST['role']) ? $_POST['role'] : 'client';
-
-        // Hash the password using bcrypt
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-        try {
-            // Check if the user already exists
-            $stmt = $pdo->prepare("SELECT id FROM inscription WHERE email = ?");
-            $stmt->execute([$email]);
-            if ($stmt->rowCount() > 0) {
-                $error[] = "Utilisateur existe déjà !"; // Store error in session
-            } else {
-                // Insert the new user with the hashed password
-                $stmt = $pdo->prepare("INSERT INTO inscription (prenom, nom, email, password, role) VALUES (?, ?, ?, ?, ?)");
-                if ($stmt->execute([$prenom, $nom, $email, $hashed_password, $role])) {
-                    header("Location: index.html");
-                    exit();
-                } else {
-                    $error[] = "Erreur lors de l'inscription.";
-                }
-            }
-        } catch (Exception $e) {
-            //$error[] = "Erreur: " . $e->getMessage(); // Store exception message
-        }
-    } else {
-        $error[] = "Veuillez remplir tous les champs.";
-    }
-}
-// Redirect back to the form
-//header("Location: singup.php");
-exit();
-?>

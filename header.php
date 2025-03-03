@@ -55,8 +55,8 @@
 
                                     </ul>
                                 </li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="about.php">About</a></li>
+                                <li><a href="contact.php">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -64,7 +64,7 @@
                         <a href="#" class="icons-btn d-inline-block js-search-open">
                             <span class="icon-search"></span>
                         </a>
-                        <a href="cart.html" class="icons-btn d-inline-block bag">
+                        <a href="cart.php" class="icons-btn d-inline-block bag">
                             <span class="icon-shopping-bag"></span>
                             <span class="number">25</span>
                         </a>
@@ -73,7 +73,7 @@
                         </a>
                     </div>
                     <div class="dropdown">
-                        <a href="#" class="icons-btn d-inline-block " id="userDropdown" data-toggle="dropdown"
+                        <a href="" class="icons-btn d-inline-block " id="userDropdown" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="true">
                             <span class="icon-user" style="font-size: 20px;"></span>
                         </a>

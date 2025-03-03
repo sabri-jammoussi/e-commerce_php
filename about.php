@@ -38,63 +38,8 @@
         </div>
       </div>
 
-      <div class="container">
-        <div class="d-flex align-items-center justify-content-between">
-          <div class="logo">
-            <div class="site-logo">
-              <a href="index.html" class="js-logo-clone">Pharma</a>
-            </div>
-          </div>
-          <div class="main-nav d-none d-lg-block">
-            <nav class="site-navigation text-right text-md-center" role="navigation">
-              <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Store</a></li>
-                <li class="has-children">
-                  <a href="#">Dropdown</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Supplements</a></li>
-                    <li class="has-children">
-                      <a href="#">Vitamins</a>
-                      <ul class="dropdown">
-                        <li><a href="#">Supplements</a></li>
-                        <li><a href="#">Vitamins</a></li>
-                        <li><a href="#">Diet &amp; Nutrition</a></li>
-                        <li><a href="#">Tea &amp; Coffee</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Diet &amp; Nutrition</a></li>
-                    <li><a href="#">Tea &amp; Coffee</a></li>
 
-                  </ul>
-                </li>
-                <li class="active"><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
-          <div class="icons">
-            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-            <a href="cart.html" class="icons-btn d-inline-block bag">
-              <span class="icon-shopping-bag"></span>
-              <span class="number">2</span>
-            </a>
-            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
-                class="icon-menu"></span></a>
-          </div>
-          <div class="dropdown">
-            <a href="#" class="icons-btn d-inline-block " id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="true">
-              <span class="icon-user" style="font-size: 20px;"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-              <a class="dropdown-item" href="profile.html">Profile</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="login.html">Logout</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php require_once "header.php"; ?>
     </div>
 
     <div class="site-blocks-cover inner-page" style="background-image: url('images/hero_1.jpg');">
@@ -103,7 +48,8 @@
           <div class="col-lg-7 mx-auto align-self-center">
             <div class=" text-center">
               <h1>About Us</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum obcaecati natus iure voluptatum eveniet harum recusandae ducimus saepe.</p>ˀ
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum obcaecati natus iure
+                voluptatum eveniet harum recusandae ducimus saepe.</p>ˀ
             </div>
           </div>
         </div>
@@ -117,31 +63,37 @@
             <div class="block-16">
               <figure>
                 <img src="images/bg_1.jpg" alt="Image placeholder" class="img-fluid rounded">
-                <a href="https://vimeo.com/channels/staffpicks/93951774" class="play-button popup-vimeo"><span
-                    class="icon-play"></span></a>
-    
+                <a href="https://vimeo.com/channels/staffpicks/93951774"
+                  class="play-button popup-vimeo"><span class="icon-play"></span></a>
+
               </figure>
             </div>
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-5">
-    
-    
+
+
             <div class="site-section-heading pt-3 mb-4">
               <h2 class="text-black">How We Started</h2>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat, dicta at laboriosam, nemo
-              exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos sequi hic fugiat
-              asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum quas.</p>
-            <p>Accusantium dolor ratione maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem in, quibusdam
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat, dicta at laboriosam,
+              nemo
+              exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos
+              sequi hic fugiat
+              asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum
+              quas.
+            </p>
+            <p>Accusantium dolor ratione maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem
+              in,
+              quibusdam
               cumque recusandae, laudantium minima repellendus.</p>
-    
+
           </div>
         </div>
       </div>
     </div>
 
-    
+
 
     <div class="site-section bg-light custom-border-bottom" data-aos="fade">
       <div class="container">
@@ -150,29 +102,36 @@
             <div class="block-16">
               <figure>
                 <img src="images/hero_1.jpg" alt="Image placeholder" class="img-fluid rounded">
-                <a href="https://vimeo.com/channels/staffpicks/93951774" class="play-button popup-vimeo"><span
-                    class="icon-play"></span></a>
-    
+                <a href="https://vimeo.com/channels/staffpicks/93951774"
+                  class="play-button popup-vimeo"><span class="icon-play"></span></a>
+
               </figure>
             </div>
           </div>
           <div class="col-md-5 mr-auto">
-    
-    
+
+
             <div class="site-section-heading pt-3 mb-4">
               <h2 class="text-black">We Are Trusted Company</h2>
             </div>
-            <p class="text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat, dicta at laboriosam, nemo
-              exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos sequi hic fugiat
-              asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum quas.</p>
-            <p class="text-black">Accusantium dolor ratione maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem in, quibusdam
+            <p class="text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat,
+              dicta
+              at laboriosam, nemo
+              exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos
+              sequi hic fugiat
+              asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum
+              quas.
+            </p>
+            <p class="text-black">Accusantium dolor ratione maiores est deleniti nihil? Dignissimos est,
+              sunt
+              nulla illum autem in, quibusdam
               cumque recusandae, laudantium minima repellendus.</p>
-    
+
           </div>
         </div>
       </div>
     </div>
-    
+
     <div class="site-section site-section-sm site-blocks-1 border-0" data-aos="fade">
       <div class="container">
         <div class="row">
@@ -182,7 +141,9 @@
             </div>
             <div class="text">
               <h2>Free Shipping</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam.
+                Integer
+                accumsan
                 tincidunt fringilla.</p>
             </div>
           </div>
@@ -192,7 +153,9 @@
             </div>
             <div class="text">
               <h2>Free Returns</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam.
+                Integer
+                accumsan
                 tincidunt fringilla.</p>
             </div>
           </div>
@@ -202,14 +165,16 @@
             </div>
             <div class="text">
               <h2>Customer Support</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam.
+                Integer
+                accumsan
                 tincidunt fringilla.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
+
 
     <div class="site-section bg-light custom-border-bottom" data-aos="fade">
       <div class="container">
@@ -220,7 +185,7 @@
         </div>
         <div class="row">
           <div class="col-md-6 col-lg-6 mb-5">
-    
+
             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
@@ -229,7 +194,9 @@
                   <p class="block-38-subheading">CEO/Co-Founder</p>
                 </div>
                 <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil
+                    sit
+                    distinctio
                     recusandae doloribus ut fugit officia voluptate soluta. </p>
                 </div>
               </div>
@@ -244,7 +211,9 @@
                   <p class="block-38-subheading">Co-Founder</p>
                 </div>
                 <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil
+                    sit
+                    distinctio
                     recusandae doloribus ut fugit officia voluptate soluta. </p>
                 </div>
               </div>
@@ -259,7 +228,9 @@
                   <p class="block-38-subheading">Marketing</p>
                 </div>
                 <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil
+                    sit
+                    distinctio
                     recusandae doloribus ut fugit officia voluptate soluta. </p>
                 </div>
               </div>
@@ -274,7 +245,9 @@
                   <p class="block-38-subheading">Sales Manager</p>
                 </div>
                 <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil
+                    sit
+                    distinctio
                     recusandae doloribus ut fugit officia voluptate soluta. </p>
                 </div>
               </div>
@@ -292,7 +265,8 @@
 
             <div class="block-7">
               <h3 class="footer-heading mb-4">About Us</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio
+                voluptates
                 sed dolorum excepturi iure eaque, aut unde.</p>
             </div>
 
@@ -325,9 +299,11 @@
             <p>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
               Copyright &copy;
-              <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
-              with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank"
-                class="text-primary">Colorlib</a>
+              <script>
+                document.write(new Date().getFullYear());
+              </script> All rights reserved | This template is made
+              with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                target="_blank" class="text-primary">Colorlib</a>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>

@@ -40,8 +40,8 @@
 
 
             <?php
-      require_once('header.php');
-      ?>
+            require_once('header.php');
+            ?>
         </div>
     </div>
 
@@ -87,19 +87,19 @@
                     <p class="price"><del>95.00</del> &mdash; $55.00</p>
                 </div>
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="shop-single.html"> <img src="images/product_02.png" alt="Image"></a>
+                    <a href="shop-single.html"> <img alt="Image"></a>
                     <h3 class="text-dark"><a href="shop-single.html">Chanca Piedra</a></h3>
                     <p class="price">$70.00</p>
                 </div>
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="shop-single.html"> <img src="images/product_03.png" alt="Image"></a>
+                    <a href="shop-single.html"> <img src="get_image.php?id=3" alt="Image"></a>
                     <h3 class="text-dark"><a href="shop-single.html">Umcka Cold Care</a></h3>
                     <p class="price">$120.00</p>
                 </div>
 
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
 
-                    <a href="shop-single.html"> <img src="images/product_04.png" alt="Image"></a>
+                    <a href="shop-single.html"> <img src="get_image.php?id=2" alt="Image"></a>
                     <h3 class="text-dark"><a href="shop-single.html">Cetyl Pure</a></h3>
                     <p class="price"><del>45.00</del> &mdash; $20.00</p>
                 </div>
@@ -122,19 +122,19 @@
                     <p class="price"><del>95.00</del> &mdash; $55.00</p>
                 </div>
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="shop-single.html"> <img src="images/product_02.png" alt="Image"></a>
+                    <a href="shop-single.html"> <img src="get_image.php?id=1" alt="Image"></a>
                     <h3 class="text-dark"><a href="shop-single.html">Chanca Piedra</a></h3>
                     <p class="price">$70.00</p>
                 </div>
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="shop-single.html"> <img ˀsrc="images/product_03.png" alt="Image"></a>
+                    <a href="shop-single.html"> <img ˀsrc="get_image.php?id=3" alt="Image"></a>
                     <h3 class="text-dark"><a href="shop-single.html">Umcka Cold Care</a></h3>
                     <p class="price">$120.00</p>
                 </div>
 
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
 
-                    <a href="shop-single.html"> <img src="images/product_04.png" alt="Image"></a>
+                    <a href="shop-single.html"> <img src="get_image.php?id=2" alt="Image"></a>
                     <h3 class="text-dark"><a href="shop-single.html">Cetyl Pure</a></h3>
                     <p class="price"><del>45.00</del> &mdash; $20.00</p>
                 </div>
@@ -239,7 +239,7 @@
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;
                         <script>
-                        document.write(new Date().getFullYear());
+                            document.write(new Date().getFullYear());
                         </script> All rights reserved | This template is made
                         with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
                             target="_blank" class="text-primary">Colorlib</a>

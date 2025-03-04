@@ -69,8 +69,10 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        222
+
                                         <td class="product-thumbnail">
-                                            <img src="images/product_02.png" alt="Image" class="img-fluid">
+                                            <img src="get_image.php?id=1" alt="Image" class="img-fluid" width="10" , height="20">
                                         </td>
                                         <td class="product-name">
                                             <h2 class="h5 text-black">Ibuprofen</h2>
@@ -261,7 +263,7 @@
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;
                             <script>
-                            document.write(new Date().getFullYear());
+                                document.write(new Date().getFullYear());
                             </script> All rights reserved | This template is made
                             with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
                                 target="_blank" class="text-primary">Colorlib</a>

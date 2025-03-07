@@ -1,3 +1,15 @@
+<?php
+// require_once("config.php");
+// $cnx = new connexion();
+// $pdo = $cnx->CNXbase();
+echo "<script>console.log('This is a message from PHP! pass input', '" . $_SESSION["email"] . "');</script>";
+
+// try {
+//     // Fetch the hashed password from the database
+//     $stmt = $pdo->prepare("SELECT * FROM inscription WHERE role = ?");
+// } catch (PDOException $e) {
+// }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +69,7 @@
                                 </li>
                                 <li><a href="about.php">About</a></li>
                                 <li><a href="contact.php">Contact</a></li>
+                                <li><a href="listeClient.php">Liste des clients</a></li>
                             </ul>
                         </nav>
                     </div>

@@ -2,7 +2,7 @@
 // getImage.php
 
 // Connexion à la base de données
-include 'connex.php'; // Assure-toi que ce fichier contient la connexion à la base
+require_once "config.php";
 
 // Vérifier si un ID est fourni
 if (isset($_GET['id'])) {
@@ -30,3 +30,5 @@ if (isset($_GET['id'])) {
 } else {
     echo "Aucun ID fourni.";
 }
+
+

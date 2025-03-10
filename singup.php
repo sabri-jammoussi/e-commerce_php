@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $role = isset($_POST['role']) ? $_POST['role'] : 'client';
 
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
+//la7dha
         try {
             $stmt = $pdo->prepare("SELECT id FROM inscription WHERE email = ?");
             $stmt->execute([$email]);

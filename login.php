@@ -27,16 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Vérifier le mot de passe
                     if (password_verify($password, $stored_password)) {
                         $_SESSION["connecte"] = "1";
-                        $_SESSION["inscription"] = $row["email"];
+                        $_SESSION["inscription"] = $row["email"];                       
                         //  echo "<script>console.log('This is a message from PHP! pass input', '" . $_SESSION["inscription"] . "');</script>";
-
-                        $_SESSION["role"] = $row["role"] ?? ''; // Vérification si la clé existe
-
-                        // Redirection après connexion réussie
+                        $_SESSION["role"] = $row["role"] ?? '';
                         header('Location: index.php');
                         exit();
                     } else {
-                        $error[] = "Mot de passe incorrect."; // Mot de passe invalide
+                        $error[] = "Mot de passe incorrect.";
                     }
                 }
             } else {

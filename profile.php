@@ -1,30 +1,35 @@
 <?php
 require_once('config.php');
+
+if (!isset($_SESSION['inscription'])) {
+    die("User not logged in.");
+}
+
 $cnx = new connexion();
 $pdo = $cnx->CNXbase();
 
 try {
-    $stmt = $pdo->prepare("SELECT * FROM inscription");
-    $stmt->execute(); // Execute the query
+    // Use a WHERE clause to get the correct user
+    $stmt = $pdo->prepare("SELECT * FROM inscription WHERE email = :email");
+    $stmt->bindParam(':email', $_SESSION['inscription'], PDO::PARAM_STR);
+    $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Assign user data
         $nom = $row['nom'];
         $prenom = $row['prenom'];
         $email = $row['email'];
         $role = $row['role'];
-        // Convert PHP array to JSON for JavaScript
-        $jsonData = json_encode($row);
-
-        // Output JavaScript console log
-        echo "<script>console.log('This is a message from PHP! pass stored testttt', $jsonData);</script>";
     } else {
-        echo "<script>console.log('No data found');</script>";
+        echo "<script>console.log('No matching user found');</script>";
     }
 } catch (PDOException $e) {
     die("Database error: " . $e->getMessage());
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,16 +53,16 @@ try {
 
     <link rel="stylesheet" href="css/style.css">
     <style>
-        button {
-            margin-top: 50px;
-            background-color: #ffffff;
-            color: #080710;
-            padding: 15px 0;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    button {
+        margin-top: 50px;
+        background-color: #ffffff;
+        color: #080710;
+        padding: 15px 0;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+    }
     </style>
 </head>
 

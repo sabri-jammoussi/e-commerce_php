@@ -1,11 +1,13 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once 'config.php';
 
 function Verifier_session()
 {
-
-    if (($_SESSION['connecte'] != "1")) {
-        header("Location: login.php"); // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
+    if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] != "1") {
+        header('Location: login.php');
         exit();
     }
 }

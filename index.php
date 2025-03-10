@@ -23,7 +23,14 @@
 </head>
 
 <body>
+    <?php
+    require_once "config.php";
+    require_once "session.php";
+    Verifier_session();
+    require_once "header.php";
+    echo "<script>console.log('This is a message from PHP! pass stored','" . $_SESSION['inscription'] . "');</script>";
 
+    ?>
     <div class="site-wrap">
         <div class="site-navbar py-2">
             <div class="search-wrap">
@@ -35,12 +42,7 @@
                 </div>
             </div>
 
-            <?php
-            require_once "header.php";
-            //require_once "session.php";
-            //Verifier_session();
 
-            ?>
 
             <div class="site-blocks-cover" style="background-image: url('images/hero_1.jpg');">
                 <div class="container">

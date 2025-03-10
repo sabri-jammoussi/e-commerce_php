@@ -1,51 +1,52 @@
 <?php
-session_start(); // Start the session
+session_start();
+// session_start(); // Démarrer la session
 
 require_once('config.php');
+
 $cnx = new connexion();
 $pdo = $cnx->CNXbase();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST['email']) && !empty($_POST['password'])) {
         $email = trim($_POST['email']);
-        $password = trim($_POST['password']); // Plain password input (no hashing here)
+        $password = trim($_POST['password']); // Mot de passe en clair
 
         try {
-            // Fetch the hashed password from the database
+            // Requête SQL pour récupérer l'utilisateur
             $stmt = $pdo->prepare("SELECT * FROM inscription WHERE email = ?");
             $stmt->execute([$email]);
 
             if ($stmt->rowCount() > 0) {
-                $_SESSION["connecte"] = "1";
+                $row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupérer une seule ligne
+                //$_SESSION["connecte"] = "1";
 
-                $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                $test = $row['email'];
-                echo "<script>console.log('This is a message from PHP! pass stored testttt','" . $test . "');</script>";
-                $stored_password = trim($row['password']); // Fetch the hashed password from the database
-                echo "<script>console.log('This is a message from PHP! pass stored','" . $row['role'] . "');</script>";
-                echo "<script>console.log('This is a message from PHP! pass input', '" . $password . "');</script>";
-                // Use password_verify to compare the plain password with the hashed one
-                if (password_verify($password, $stored_password)) {
-                    echo "<script>console.log('This is a message from PHP! pass stored 7777777777');</script>";
-                    $_SESSION['email'] = $email; // Store email in session
+                if ($row) {
+                    $stored_password = trim($row['password']); // Récupération du mot de passe hashé
 
-                    $_SESSION['role'] = $role; // Store email in session
-                    echo "<script>console.log('This is a message from PHP! pass input', '" . $role . "');</script>";
+                    // Vérifier le mot de passe
+                    if (password_verify($password, $stored_password)) {
+                        $_SESSION["connecte"] = "1";
+                        $_SESSION["inscription"] = $row["email"];
+                        //  echo "<script>console.log('This is a message from PHP! pass input', '" . $_SESSION["inscription"] . "');</script>";
 
-                    $_SESSION["connecte"] = "1";
-                    header('Location: index.php'); // Redirect to index page
-                    //exit();
-                } else {
-                    $error[] = "Invalid password."; // Invalid password
+                        $_SESSION["role"] = $row["role"] ?? ''; // Vérification si la clé existe
+
+                        // Redirection après connexion réussie
+                        header('Location: index.php');
+                        exit();
+                    } else {
+                        $error[] = "Mot de passe incorrect."; // Mot de passe invalide
+                    }
                 }
             } else {
-                $error[] = "No user found with that email."; // User not found
+                $error[] = "Aucun utilisateur trouvé avec cet email."; // Aucun utilisateur trouvé
             }
         } catch (PDOException $e) {
-            die("Database error: " . $e->getMessage());
+            die("Erreur de base de données : " . $e->getMessage());
         }
     } else {
-        $error[] = "Email and password not provided."; // Missing email or password
+        $error[] = "Veuillez fournir un email et un mot de passe."; // Champs vides
     }
 }
 ?>

@@ -1,9 +1,9 @@
 <?php
+session_start();
 class connexion
 {
     public function CNXbase()
     {
-        session_start();
         try {
             $con = new PDO(
                 'mysql:host=localhost;dbname=projet_php_iit',

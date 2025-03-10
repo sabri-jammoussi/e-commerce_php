@@ -1,15 +1,3 @@
-<?php
-// require_once("config.php");
-// $cnx = new connexion();
-// $pdo = $cnx->CNXbase();
-echo "<script>console.log('This is a message from PHP! pass input', '" . $_SESSION["email"] . "');</script>";
-
-// try {
-//     // Fetch the hashed password from the database
-//     $stmt = $pdo->prepare("SELECT * FROM inscription WHERE role = ?");
-// } catch (PDOException $e) {
-// }
-?>
 <!DOCTYPE html>
 <html lang="en">
 

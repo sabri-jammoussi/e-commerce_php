@@ -44,7 +44,6 @@
             ?>
         </div>
     </div>
-
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
@@ -104,13 +103,13 @@
                     <p class="price"><del>45.00</del> &mdash; $20.00</p>
                 </div>
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="shop-single.html"> <img src="images/product_05.png" alt="Image"></a>
+                    <a href="shop-single.html"> <img src="get_image.php?id=4" alt="Image"></a>
                     <h3 class="text-dark"><a href="shop-single.html">CLA Core</a></h3>
                     <p class="price">$38.00</p>
                 </div>
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
                     <span class="tag">Sale</span>
-                    <a href="shop-single.html"> <img src="images/product_06.png" alt="Image"></a>
+                    <a href="shop-single.html"> <img src="get_image.php?id=5" alt="Image"></a>
                     <h3 class="text-dark"><a href="shop-single.html">Poo Pourri</a></h3>
                     <p class="price"><del>$89</del> &mdash; $38.00</p>
                 </div>
@@ -139,13 +138,13 @@
                     <p class="price"><del>45.00</del> &mdash; $20.00</p>
                 </div>
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="shop-single.html"> <img src="images/product_05.png" alt="Image"></a>
+                    <a href="shop-single.html"> <img src="get_image.php?id=4" alt="Image"></a>
                     <h3 class="text-dark"><a href="shop-single.html">CLA Core</a></h3>
                     <p class="price">$38.00</p>
                 </div>
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
                     <span class="tag">Sale</span>
-                    <a href="shop-single.html"> <img src="images/product_06.png" alt="Image"></a>
+                    <a href="shop-single.html"> <img  alt="Image"></a>
                     <h3 class="text-dark"><a href="shop-single.html">Poo Pourri</a></h3>
                     <p class="price"><del>$89</del> &mdash; $38.00</p>
                 </div>

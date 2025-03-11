@@ -114,35 +114,35 @@
                             <span class="tag">Sale</span>
                             <a href="shop-single.php"> <img src="images/product_01.png" alt="Image"></a>
                             <h3 class="text-dark"><a href="shop-single.php">Bioderma</a></h3>
-                            <p class="price"><del>95.00</del> &mdash; $55.00</p>
+                            <p class="price"><del>95.00</del> &mdash;  55.00 Dt</p>
                         </div>
                         <div class="col-sm-6 col-lg-4 text-center item mb-4">
                             <a href="shop-single.php"> <img src="get_image.php?id=1" alt="Image"></a>
                             <h3 class="text-dark"><a href="shop-single.php">Chanca Piedra</a></h3>
-                            <p class="price">$70.00</p>
+                            <p class="price"> 70.00 Dt</p>
                         </div>
                         <div class="col-sm-6 col-lg-4 text-center item mb-4">
                             <a href="shop-single.php"> <img src="get_image.php?id=3" alt="Image"></a>
                             <h3 class="text-dark"><a href="shop-single.php">Umcka Cold Care</a></h3>
-                            <p class="price">$120.00</p>
+                            <p class="price"> 120.00 Dt</p>
                         </div>
 
                         <div class="col-sm-6 col-lg-4 text-center item mb-4">
 
                             <a href="shop-single.php"> <img src="get_image.php?id=2" alt="Image"></a>
                             <h3 class="text-dark"><a href="shop-single.php">Cetyl Pure</a></h3>
-                            <p class="price"><del>45.00</del> &mdash; $20.00</p>
+                            <p class="price"><del>45.00</del> &mdash; 20.00 Dt</p>
                         </div>
                         <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                            <a href="shop-single.php"> <img src="images/product_05.png" alt="Image"></a>
+                            <a href="shop-single.php"> <img src="get_image.php?id=4" alt="Image"></a>
                             <h3 class="text-dark"><a href="shop-single.php">CLA Core</a></h3>
-                            <p class="price">$38.00</p>
+                            <p class="price"> 38.00 Dt</p>
                         </div>
                         <div class="col-sm-6 col-lg-4 text-center item mb-4">
                             <span class="tag">Sale</span>
-                            <a href="shop-single.php"> <img src="images/product_06.png" alt="Image"></a>
+                            <a href="shop-single.php"> <img src="get_image.php?id=5" alt="Image"></a>
                             <h3 class="text-dark"><a href="shop-single.php">Poo Pourri</a></h3>
-                            <p class="price"><del>$89</del> &mdash; $38.00</p>
+                            <p class="price"><del> 89</del> &mdash; 38.00 Dt</p>
                         </div>
                     </div>
                     <div class="row mt-5">

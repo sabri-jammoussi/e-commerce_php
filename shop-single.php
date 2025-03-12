@@ -46,7 +46,8 @@
                 <div class="row">
                     <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <a
                             href="shop.html">Store</a> <span class="mx-2 mb-0">/</span> <strong
-                            class="text-black">Ibuprofen Tablets, 200mg</strong></div>
+                            class="text-black">Ampoule SVR vitamin C
+                            </strong></div>
                 </div>
             </div>
         </div>
@@ -56,16 +57,15 @@
                 <div class="row">
                     <div class="col-md-5 mr-auto">
                         <div class="border text-center">
-                            <img src="images/product_07_large.png" alt="Image" class="img-fluid p-5">
+                            <img src="get_image.php?id=1" alt="Image" class="img-fluid p-5">
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h2 class="text-black">Ibuprofen Tablets, 200mg</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo?
-                            Incidunt facere, natus
-                            soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga
-                            voluptas,
-                            distinctio, aperiam, ratione dolore.</p>
+                        <h2 class="text-black">Ampoule SVR vitamin C</h2>
+                        <p>SVR Ampoule C Anti-Ox Concentré Eclat Régénérant Peaux ternes,
+                             fatiguées, manque d'uniformité, rides. SVR ampoule 20% de Vitamine
+                            C optimisée pour une peau éclatante Ce sérum ultra-concentré en vitamine C optimisée recharge 
+                            immédiatement la peau pour révéler l'éclat du teint et réduire les signes de fatigue.</p>
 
 
                         <p><del>$95.00</del> <strong class="text-primary h4">$55.00</strong></p>

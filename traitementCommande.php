@@ -1,7 +1,9 @@
 <?php
+
 include 'config.php'; // Inclusion de la connexion
 $database = new connexion();
 $con = $database->CNXbase();
+
 $message = "";
 
 // Récupérer les produits disponibles
@@ -44,12 +46,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+include "header.php"
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commander un produit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
+
 <body class="bg-light">
     <div class="container mt-5">
         <h2 class="text-center">Passer une commande</h2>
@@ -77,8 +85,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="quantite" class="form-label">Quantité</label>
                 <input type="number" class="form-control" id="quantite" name="quantite" required>
             </div>
-            <button type="submit" class="btn btn-success w-100">Commander</button>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success">Commander</button>
+                <a type="reset" class="btn btn-secondary me-2" href="index.php">Annuler</a>
+            </div>
         </form>
     </div>
 </body>
+
 </html>

@@ -27,7 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Vérifier le mot de passe
                     if (password_verify($password, $stored_password)) {
                         $_SESSION["connecte"] = "1";
-                        $_SESSION["inscription"] = $row["email"];                       
+                        $_SESSION["inscription"] = $row["email"];
+                        $_SESSION["role"] = $row["role"];
                         //  echo "<script>console.log('This is a message from PHP! pass input', '" . $_SESSION["inscription"] . "');</script>";
                         $_SESSION["role"] = $row["role"] ?? '';
                         header('Location: index.php');

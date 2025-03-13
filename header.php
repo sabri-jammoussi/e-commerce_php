@@ -1,3 +1,6 @@
+<?php
+require_once("config.php")
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +60,9 @@
                                 </li>
                                 <li><a href="about.php">About</a></li>
                                 <li><a href="contact.php">Contact</a></li>
+                                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") : ?>
                                 <li><a href="listeClient.php">Liste des clients</a></li>
+                                <?php endif; ?>
                             </ul>
                         </nav>
                     </div>

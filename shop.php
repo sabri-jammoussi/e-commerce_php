@@ -47,7 +47,7 @@
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong
+                <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <strong
                         class="text-black">Store</strong></div>
             </div>
         </div>
@@ -81,8 +81,8 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
                     <span class="tag">Sale</span>
-                    <a href="shop-single.html"> <img src="images/product_01.png" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">Bioderma</a></h3>
+                    <a href="shop-single.php"> <img src="images/product_01.png" alt="Image"></a>
+                    <h3 class="text-dark"><a href="shop-single.php">Bioderma</a></h3>
                     <p class="price"><del>95.00</del> &mdash; $55.00</p>
                 </div>
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
@@ -144,7 +144,7 @@
                 </div>
                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
                     <span class="tag">Sale</span>
-                    <a href="shop-single.html"> <img  alt="Image"></a>
+                    <a href="shop-single.html"> <img alt="Image"></a>
                     <h3 class="text-dark"><a href="shop-single.html">Poo Pourri</a></h3>
                     <p class="price"><del>$89</del> &mdash; $38.00</p>
                 </div>

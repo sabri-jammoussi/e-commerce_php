@@ -45,7 +45,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 mb-0">
-                        <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span>
+                        <a href="index.php">Home</a> <span class="mx-2 mb-0">/</span>
                         <strong class="text-black">Contact</strong>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;
                             <script>
-                            document.write(new Date().getFullYear());
+                                document.write(new Date().getFullYear());
                             </script> All rights reserved | This template is made
                             with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
                                 target="_blank" class="text-primary">Colorlib</a>

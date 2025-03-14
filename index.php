@@ -114,7 +114,7 @@
                             <span class="tag">Sale</span>
                             <a href="shop-single.php"> <img src="images/product_01.png" alt="Image"></a>
                             <h3 class="text-dark"><a href="shop-single.php">Bioderma</a></h3>
-                            <p class="price"><del>95.00</del> &mdash;  55.00 Dt</p>
+                            <p class="price"><del>95.00</del> &mdash; 55.00 Dt</p>
                         </div>
                         <div class="col-sm-6 col-lg-4 text-center item mb-4">
                             <a href="shop-single.php"> <img src="get_image.php?id=1" alt="Image"></a>
@@ -138,16 +138,19 @@
                             <h3 class="text-dark"><a href="shop-single.php">CLA Core</a></h3>
                             <p class="price"> 38.00 Dt</p>
                         </div>
+
+
                         <div class="col-sm-6 col-lg-4 text-center item mb-4">
                             <span class="tag">Sale</span>
-                            <a href="shop-single.php"> <img src="get_image.php?id=5" alt="Image"></a>
-                            <h3 class="text-dark"><a href="shop-single.php">Poo Pourri</a></h3>
+                            <a href="produit.php"> <img src="get_image.php?id=5" alt="Image"></a>
+                            <h3 class="text-dark"><a href="produit.php">Poo Pourri</a></h3>
                             <p class="price"><del> 89</del> &mdash; 38.00 Dt</p>
                         </div>
+
                     </div>
                     <div class="row mt-5">
                         <div class="col-12 text-center">
-                            <a href="shop.html" class="btn btn-primary px-4 py-3">View All Products</a>
+                            <a href="shop.php" class="btn btn-primary px-4 py-3">View All Products</a>
                         </div>
                     </div>
                 </div>

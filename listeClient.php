@@ -66,12 +66,7 @@ try {
 
 <body>
     <div class="container mt-5">
-        <div>
-            <h2 class="mb-4">Liste des Clients</h2>
-            <button class="btn btn-success btn-sm add-btn" data-bs-toggle="modal" data-bs-target="#addModal">
-                <i class="fas fa-plus"></i> Ajouter un client
-            </button>
-        </div>
+        <h2 class="mb-4">Liste des Clients</h2>
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
                 <tr>

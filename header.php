@@ -18,6 +18,7 @@ require_once("config.php")
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <link rel="stylesheet" href="css/aos.css">
 
@@ -38,7 +39,8 @@ require_once("config.php")
                     <div class="main-nav d-none d-lg-block">
                         <nav class="site-navigation text-right text-md-center" role="navigation">
                             <ul class="site-menu js-clone-nav d-none d-lg-block">
-                                <li class="active"><a href="index.php">Home</a></li>
+                            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "client") : ?>
+                                <li class=""><a href="index.php">Home</a></li>
                                 <li><a href="shop.php">Store</a></li>
                                 <li class="has-children">
                                     <a href="#">Dropdown</a>
@@ -58,7 +60,7 @@ require_once("config.php")
 
                                     </ul>
                                 </li>
-                                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "client") : ?>
+                
 
                                 <li><a href="about.php">About</a></li>
                                 <li><a href="contact.php">Contact</a></li>

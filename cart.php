@@ -68,19 +68,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        222
+                                    <tr>5465465
 
-                                        <td class="product-thumbnail">
-                                            <img src="get_image.php?id=1" alt="Image" class="img-fluid" width="10" ,
-                                                height="20">
+                                        <td class="product-thumbnail"style ="text-align: center; vertical-align: middle;">
+                                            <img src="get_image.php?id=1" alt="Image" class="img-fluid" width="100" ,
+                                                height="200">
                                         </td>
-                                        <td class="product-name">
+                                        <td class="product-name" style ="text-align: center; vertical-align: middle;">
                                             <h2 class="h5 text-black">Ibuprofen</h2>
                                         </td>
                                         <td>$55.00</td>
                                         <td>
-                                            <div class="input-group mb-3" style="max-width: 120px;">
+                                            <div class="input-group mb-3" style="max-width: 120px;margin:auto">
                                                 <div class="input-group-prepend">
                                                     <button class="btn btn-outline-primary js-btn-minus"
                                                         type="button">&minus;</button>

@@ -1,3 +1,21 @@
+<?php 
+        require_once "config.php";
+        $cnx = new connexion();
+        $pdo = $cnx->CNXbase();
+        try{
+            $stmt = $pdo->prepare("SELECT * FROM produits");
+            $stmt->execute();
+            $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+            $jsonProduits = json_encode($produits);
+        
+            // Print to JavaScript console
+            echo "<script>console.log('Data received:', " . $jsonProduits . ");</script>";
+        
+        }catch(PDOException $e){
+            die("Erreur de base de données : " . $e->getMessage());
+        }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,78 +95,20 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <span class="tag">Sale</span>
-                    <a href="shop-single.php"> <img src="images/product_01.png" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.php">Bioderma</a></h3>
-                    <p class="price"><del>95.00</del> &mdash; $55.00</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="shop-single.html"> <img alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">Chanca Piedra</a></h3>
-                    <p class="price">$70.00</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="shop-single.html"> <img src="get_image.php?id=3" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">Umcka Cold Care</a></h3>
-                    <p class="price">$120.00</p>
-                </div>
+            <?php if (!empty($produits)): ?>
+                        <?php foreach ($produits as $produit): ?>
+                        <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                            <span class="tag">Sale</span>
+                            <a href="shop-single.php" title="<?= htmlspecialchars($produit['description']) ?>">  <img src="get_image.php?id=<?=htmlspecialchars($produit['id']) ?>" alt="Image" style="width:180px; height:250px;"></a>
+                            <h3 class="text-dark"> <a href="shop-single.php"><?= htmlspecialchars($produit['nom']) ?></a></h3>
+                            <p class="price">prix :<?= htmlspecialchars($produit['prix']) ?> DT</p>
+                        </div>
+                        <?php endforeach; ?>
+                        <?php endif ?>
+                        </div>
+</div>
 
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-
-                    <a href="shop-single.html"> <img src="get_image.php?id=2" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">Cetyl Pure</a></h3>
-                    <p class="price"><del>45.00</del> &mdash; $20.00</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="shop-single.html"> <img src="get_image.php?id=4" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">CLA Core</a></h3>
-                    <p class="price">$38.00</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <span class="tag">Sale</span>
-                    <a href="shop-single.html"> <img src="get_image.php?id=5" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">Poo Pourri</a></h3>
-                    <p class="price"><del>$89</del> &mdash; $38.00</p>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <span class="tag">Sale</span>
-                    <a href="shop-single.html"> <img src="images/product_01.png" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">Bioderma</a></h3>
-                    <p class="price"><del>95.00</del> &mdash; $55.00</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="shop-single.html"> <img src="get_image.php?id=1" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">Chanca Piedra</a></h3>
-                    <p class="price">$70.00</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="shop-single.html"> <img ˀsrc="get_image.php?id=3" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">Umcka Cold Care</a></h3>
-                    <p class="price">$120.00</p>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-
-                    <a href="shop-single.html"> <img src="get_image.php?id=2" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">Cetyl Pure</a></h3>
-                    <p class="price"><del>45.00</del> &mdash; $20.00</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <a href="shop-single.html"> <img src="get_image.php?id=4" alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">CLA Core</a></h3>
-                    <p class="price">$38.00</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                    <span class="tag">Sale</span>
-                    <a href="shop-single.html"> <img alt="Image"></a>
-                    <h3 class="text-dark"><a href="shop-single.html">Poo Pourri</a></h3>
-                    <p class="price"><del>$89</del> &mdash; $38.00</p>
-                </div>
-            </div>
             <div class="row mt-5">
                 <div class="col-md-12 text-center">
                     <div class="site-block-27">
@@ -168,32 +128,6 @@
     </div>
 
 
-    <div class="site-section bg-secondary bg-image" style="background-image: url('images/bg_2.jpg');">
-        <div class="container">
-            <div class="row align-items-stretch">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('images/bg_1.jpg');">
-                        <div class="banner-1-inner align-self-center">
-                            <h2>Pharma Products</h2>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae ex ad minus rem odio
-                                voluptatem.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('images/bg_2.jpg');">
-                        <div class="banner-1-inner ml-auto  align-self-center">
-                            <h2>Rated by Experts</h2>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae ex ad minus rem odio
-                                voluptatem.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
     <?php require_once "footer.php" ?>
     </div>
 

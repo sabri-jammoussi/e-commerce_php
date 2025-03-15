@@ -1,3 +1,31 @@
+
+<div class="site-section bg-secondary bg-image" style="background-image: url('images/bg_2.jpg');">
+        <div class="container">
+            <div class="row align-items-stretch">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('images/bg_1.jpg');">
+                        <div class="banner-1-inner align-self-center">
+                            <h2>Pharma Products</h2>
+                            <p>Chez Pharma, nous sélectionnons des produits reconnus pour votre sécurité 
+                                pour le soin du visage et du corps,des produits d'hygiène,des compléments alimentaires
+                                et des produits naturels et bio.
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('images/bg_2.jpg');">
+                        <div class="banner-1-inner ml-auto  align-self-center">
+                            <h2>Pourquoi Pharma?</h2>
+                            <p>Nous assurons la qualité et la sécurité avec des conseils personnalisés avec plusieurs offres et promotions.
+                                
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 <footer class="site-footer">
     <div class="container">
         <div class="row">
@@ -5,9 +33,7 @@
 
                 <div class="block-7">
                     <h3 class="footer-heading mb-4">About Us</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio
-                        voluptates
-                        sed dolorum excepturi iure eaque, aut unde.</p>
+                    <p>Pharma, votre parapharmacie dédiée à votre bien-être et à votre santé au quotidien </p>
                 </div>
 
             </div>
@@ -25,9 +51,9 @@
                 <div class="block-5 mb-5">
                     <h3 class="footer-heading mb-4">Contact Info</h3>
                     <ul class="list-unstyled">
-                        <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
-                        <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                        <li class="email">emailaddress@domain.com</li>
+                        <li class="address">Route taniour klm 7</li>
+                        <li class="phone"><a href="tel://23923929210">+216 51 043 305</a></li>
+                        <li class="email">pharma@gmail.com</li>
                     </ul>
                 </div>
 

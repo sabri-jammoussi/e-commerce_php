@@ -58,61 +58,92 @@ try{
 
 
 
-            <div class="site-blocks-cover" style="background-image: url('images/hero_1.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
-                            <div class="site-block-cover-content text-center">
-                                <h2 class="sub-title">Effective Medicine, New Medicine Everyday</h2>
-                                <h1>Welcome To Pharma</h1>
-                                <p>
-                                    <a href="traitementCommande.php" class="btn btn-primary px-5 py-3">Shop Now</a>
-                                </p>
-                            </div>
+            <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharma - Dynamic Background</title>
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        #hero-section {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 1s ease-in-out;
+        }
+    </style>
+</head><body>
+    <div class="site-wrap">
+        <!-- Hero Section with Dynamic Background -->
+        <div class="site-blocks-cover" id="hero-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+                        <div class="site-block-cover-content text-center">
+                            <h1>Welcome To Pharma</h1>
+                            <p>
+                                <a href="traitementCommande.php" class="btn btn-primary px-5 py-3">Shop Now</a>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- End Hero Section -->
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Liste des images
+            const images = [
+                "svr.png",
+                "filorga.png",
+                "sisderma.png",
+                "avene.png",
+                "nuxe.png"
+            ];
+
+            let index = 0;
+            const heroSection = document.getElementById("hero-section");
+
+            // Fonction pour changer l'arrière-plan
+            function changeBackground() {
+                index = (index + 1) % images.length;
+                heroSection.style.backgroundImage = `url('${images[index]}')`;
+            }
+
+            // Afficher immédiatement une image dès le chargement
+            heroSection.style.backgroundImage = `url('${images[index]}')`;
+
+            // Change toutes les 5 secondes
+            setInterval(changeBackground, 7000);
+        });
+    </script>
+
+    <!-- Bootstrap JS and jQuery (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+
+
+
+</html>
 
             <div class="site-section">
-                <div class="container">
-                    <div class="row align-items-stretch section-overlap">
-                        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-                            <div class="banner-wrap bg-primary h-100">
-                                <a href="#" class="h-100">
-                                    <h5>Free <br> Shipping</h5>
-                                    <p>
-                                        Amet sit amet dolor
-                                        <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-                            <div class="banner-wrap h-100">
-                                <a href="#" class="h-100">
-                                    <h5>Season <br> Sale 50% Off</h5>
-                                    <p>
-                                        Amet sit amet dolor
-                                        <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-                            <div class="banner-wrap bg-warning h-100">
-                                <a href="#" class="h-100">
-                                    <h5>Buy <br> A Gift Card</h5>
-                                    <p>
-                                        Amet sit amet dolor
-                                        <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+               
             </div>
 
             <div class="site-section">
@@ -131,7 +162,6 @@ try{
                             <a href="shop-single.php" title="<?= htmlspecialchars($produit['description']) ?>">  <img src="get_image.php?id=<?=htmlspecialchars($produit['id']) ?>" alt="Image" style="width:180px; height:250px;"></a>
                             <h3 class="text-dark"> <a href="shop-single.php"><?= htmlspecialchars($produit['nom']) ?></a></h3>
                             <p class="price">prix :<?= htmlspecialchars($produit['prix']) ?> DT</p>
-                            <p class="price">quatité :<?= htmlspecialchars($produit['stock']) ?> </p>
                         </div>
                         <?php endforeach; ?>
                         <?php endif ?>
@@ -182,105 +212,10 @@ try{
                         <div class="title-section text-center col-12">
                             <h2 class="text-uppercase">Testimonials</h2>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 block-3 products-wrap">
-                            <div class="nonloop-block-3 no-direction owl-carousel">
-
-                                <div class="testimony">
-                                    <blockquote>
-                                        <img src="images/person_1.jpg" alt="Image"
-                                            class="img-fluid w-25 mb-4 rounded-circle">
-                                        <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
-                                            voluptatem consectetur
-                                            quam tempore obcaecati maiores voluptate aspernatur iusto eveniet, placeat
-                                            ab quod tenetur ducimus.
-                                            Minus ratione sit quaerat unde.&rdquo;</p>
-                                    </blockquote>
-
-                                    <p>&mdash; Kelly Holmes</p>
-                                </div>
-
-                                <div class="testimony">
-                                    <blockquote>
-                                        <img src="images/person_2.jpg" alt="Image"
-                                            class="img-fluid w-25 mb-4 rounded-circle">
-                                        <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
-                                            voluptatem consectetur
-                                            quam tempore
-                                            obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod
-                                            tenetur ducimus. Minus ratione
-                                            sit quaerat
-                                            unde.&rdquo;</p>
-                                    </blockquote>
-
-                                    <p>&mdash; Rebecca Morando</p>
-                                </div>
-
-                                <div class="testimony">
-                                    <blockquote>
-                                        <img src="images/person_3.jpg" alt="Image"
-                                            class="img-fluid w-25 mb-4 rounded-circle">
-                                        <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
-                                            voluptatem consectetur
-                                            quam tempore
-                                            obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod
-                                            tenetur ducimus. Minus ratione
-                                            sit quaerat
-                                            unde.&rdquo;</p>
-                                    </blockquote>
-
-                                    <p>&mdash; Lucas Gallone</p>
-                                </div>
-
-                                <div class="testimony">
-                                    <blockquote>
-                                        <img src="images/person_4.jpg" alt="Image"
-                                            class="img-fluid w-25 mb-4 rounded-circle">
-                                        <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis
-                                            voluptatem consectetur
-                                            quam tempore
-                                            obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod
-                                            tenetur ducimus. Minus ratione
-                                            sit quaerat
-                                            unde.&rdquo;</p>
-                                    </blockquote>
-
-                                    <p>&mdash; Andrew Neel</p>
-                                </div>
-
-                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
 
-            <div class="site-section bg-secondary bg-image" style="background-image: url('images/bg_2.jpg');">
-                <div class="container">
-                    <div class="row align-items-stretch">
-                        <div class="col-lg-6 mb-5 mb-lg-0">
-                            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('images/bg_1.jpg');">
-                                <div class="banner-1-inner align-self-center">
-                                    <h2>Pharma Products</h2>
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae ex ad minus
-                                        rem odio voluptatem.
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 mb-5 mb-lg-0">
-                            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('images/bg_2.jpg');">
-                                <div class="banner-1-inner ml-auto  align-self-center">
-                                    <h2>Rated by Experts</h2>
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae ex ad minus
-                                        rem odio voluptatem.
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
   <?php require_once "footer.php"; ?>
         </div>
 

@@ -1,6 +1,5 @@
 <?php
-require_once("header.php");
-
+require_once "config.php";
 $cnx = new connexion();
 $pdo = $cnx->CNXbase();
 
@@ -65,6 +64,7 @@ try {
 </head>
 
 <body>
+    <?php include 'header.php'; ?>
     <div class="container mt-5">
         <h2 class="mb-4">Liste des Clients</h2>
         <table class="table table-striped table-bordered">

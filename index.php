@@ -1,3 +1,20 @@
+<?php 
+    require_once "config.php";
+$cnx = new connexion();
+$pdo = $cnx->CNXbase();
+try{
+    $stmt = $pdo->prepare("SELECT * FROM produits");
+    $stmt->execute();
+    $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+    $jsonProduits = json_encode($produits);
+
+    // Print to JavaScript console
+    echo "<script>console.log('Data received:', " . $jsonProduits . ");</script>";
+
+}catch(PDOException $e){
+    die("Erreur de base de données : " . $e->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,12 +41,9 @@
 
 <body>
     <?php
-    require_once "config.php";
     require_once "session.php";
     Verifier_session();
     require_once "header.php";
-    echo "<script>console.log('This is a message from PHP! pass stored','" . $_SESSION['inscription'] . "');</script>";
-
     ?>
     <div class="site-wrap">
         <div class="site-navbar py-2">
@@ -110,43 +124,17 @@
                     </div>
 
                     <div class="row">
+                    <?php if (!empty($produits)): ?>
+                        <?php foreach ($produits as $produit): ?>
                         <div class="col-sm-6 col-lg-4 text-center item mb-4">
                             <span class="tag">Sale</span>
-                            <a href="shop-single.php"> <img src="images/product_01.png" alt="Image"></a>
-                            <h3 class="text-dark"><a href="shop-single.php">Bioderma</a></h3>
-                            <p class="price"><del>95.00</del> &mdash; 55.00 Dt</p>
+                            <a href="shop-single.php" title="<?= htmlspecialchars($produit['description']) ?>">  <img src="get_image.php?id=<?=htmlspecialchars($produit['id']) ?>" alt="Image" style="width:180px; height:250px;"></a>
+                            <h3 class="text-dark"> <a href="shop-single.php"><?= htmlspecialchars($produit['nom']) ?></a></h3>
+                            <p class="price">prix :<?= htmlspecialchars($produit['prix']) ?> DT</p>
+                            <p class="price">quatité :<?= htmlspecialchars($produit['stock']) ?> </p>
                         </div>
-                        <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                            <a href="shop-single.php"> <img src="get_image.php?id=1" alt="Image"></a>
-                            <h3 class="text-dark"><a href="shop-single.php">Chanca Piedra</a></h3>
-                            <p class="price"> 70.00 Dt</p>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                            <a href="shop-single.php"> <img src="get_image.php?id=3" alt="Image"></a>
-                            <h3 class="text-dark"><a href="shop-single.php">Umcka Cold Care</a></h3>
-                            <p class="price"> 120.00 Dt</p>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-4 text-center item mb-4">
-
-                            <a href="shop-single.php"> <img src="get_image.php?id=2" alt="Image"></a>
-                            <h3 class="text-dark"><a href="shop-single.php">Cetyl Pure</a></h3>
-                            <p class="price"><del>45.00</del> &mdash; 20.00 Dt</p>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                            <a href="shop-single.php"> <img src="get_image.php?id=4" alt="Image"></a>
-                            <h3 class="text-dark"><a href="shop-single.php">CLA Core</a></h3>
-                            <p class="price"> 38.00 Dt</p>
-                        </div>
-
-
-                        <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                            <span class="tag">Sale</span>
-                            <a href="produit.php"> <img src="get_image.php?id=5" alt="Image"></a>
-                            <h3 class="text-dark"><a href="produit.php">Poo Pourri</a></h3>
-                            <p class="price"><del> 89</del> &mdash; 38.00 Dt</p>
-                        </div>
-
+                        <?php endforeach; ?>
+                        <?php endif ?>
                     </div>
                     <div class="row mt-5">
                         <div class="col-12 text-center">
@@ -159,42 +147,32 @@
 
             <div class="site-section bg-light">
                 <div class="container">
-                    <div class="row">
-                        <div class="title-section text-center col-12">
-                            <h2 class="text-uppercase">New Products</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 block-3 products-wrap">
-                            <div class="nonloop-block-3 owl-carousel">
-
-                                <div class="text-center item mb-4">
-                                    <a href="shop-single.php"> <img src="get_image.php?id=3" alt="Image"></a>
-                                    <h3 class="text-dark"><a href="shop-single.php">Umcka Cold Care</a></h3>
-                                    <p class="price">$120.00</p>
-                                </div>
-
-                                <div class="text-center item mb-4">
-                                    <a href="shop-single.php"> <img src="images/product_01.png" alt="Image"></a>
-                                    <h3 class="text-dark"><a href="shop-single.php">Umcka Cold Care</a></h3>
-                                    <p class="price">$120.00</p>
-                                </div>
-
-                                <div class="text-center item mb-4">
-                                    <a href="shop-single.php"> <img src="get_image.php?id=1" alt="Image"></a>
-                                    <h3 class="text-dark"><a href="shop-single.php">Umcka Cold Care</a></h3>
-                                    <p class="price">$120.00</p>
-                                </div>
-
-                                <div class="text-center item mb-4">
-                                    <a href="shop-single.php"> <img src="get_image.php?id=2" alt="Image"></a>
-                                    <h3 class="text-dark"><a href="shop-single.php">Umcka Cold Care</a></h3>
-                                    <p class="price">$120.00</p>
-                                </div>
-
+                <div class="row">
+            <div class="title-section text-center col-12">
+                <h2 class="text-uppercase">New Products</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 block-3 products-wrap">
+                <div class="nonloop-block-3 owl-carousel">
+                    <?php if (!empty($produits)): ?>
+                        <?php foreach ($produits as $produit): ?>
+                            <div class="text-center item mb-4">
+                                <a href="shop-single.php?id=<?= htmlspecialchars($produit['id']) ?>">
+                                    <img src="get_image.php?id=<?= htmlspecialchars($produit['id']) ?>" alt="Image" style="width:150px; height:200px;">
+                                </a>
+                                <h3 class="text-dark">
+                                    <a href="shop-single.php?id=<?= htmlspecialchars($produit['id']) ?>">
+                                        <?= htmlspecialchars($produit['nom']) ?>
+                                    </a>
+                                </h3>
+                                <p class="price"><?= htmlspecialchars($produit['prix']) ?> DT</p>
                             </div>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
                 </div>
             </div>
 
@@ -303,7 +281,7 @@
                     </div>
                 </div>
             </div>
-            <?php require_once "footer.php" ?>
+  <?php require_once "footer.php"; ?>
         </div>
 
         <script src="js/jquery-3.3.1.min.js"></script>

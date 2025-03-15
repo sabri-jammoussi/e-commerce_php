@@ -183,26 +183,28 @@ try{
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 block-3 products-wrap">
-                <div class="nonloop-block-3 owl-carousel">
-                    <?php if (!empty($produits)): ?>
-                        <?php foreach ($produits as $produit): ?>
-                            <div class="text-center item mb-4">
-                                <a href="shop-single.php?id=<?= htmlspecialchars($produit['id']) ?>">
-                                    <img src="get_image.php?id=<?= htmlspecialchars($produit['id']) ?>" alt="Image" style="width:150px; height:200px;">
-                                </a>
-                                <h3 class="text-dark">
-                                    <a href="shop-single.php?id=<?= htmlspecialchars($produit['id']) ?>">
-                                        <?= htmlspecialchars($produit['nom']) ?>
-                                    </a>
-                                </h3>
-                                <p class="price"><?= htmlspecialchars($produit['prix']) ?> DT</p>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </div>
-            </div>
+    <div class="col-md-12 block-3 products-wrap">
+        <div class="nonloop-block-3 owl-carousel">
+            <?php if (!empty($produits)): ?>
+                <?php foreach ($produits as $produit): ?>
+                    <div class="d-flex flex-column align-items-center text-center item mb-4">
+                        <a href="shop-single.php?id=<?= htmlspecialchars($produit['id']) ?>">
+                            <img src="get_image.php?id=<?= htmlspecialchars($produit['id']) ?>" alt="Image" class="img-fluid" style="max-width: 150px; height: 200px;">
+                        </a>
+                        <h3 class="text-dark mt-2">
+                            <a href="shop-single.php?id=<?= htmlspecialchars($produit['id']) ?>">
+                                <?= htmlspecialchars($produit['nom']) ?>
+                            </a>
+                        </h3>
+                        <p class="price font-weight-bold"><?= htmlspecialchars($produit['prix']) ?> DT</p>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
+    </div>
+    
+</div>
+
                 </div>
             </div>
 
@@ -210,7 +212,6 @@ try{
                 <div class="container">
                     <div class="row">
                         <div class="title-section text-center col-12">
-                            <h2 class="text-uppercase">Testimonials</h2>
                         </div>
                         </div>
                 </div>

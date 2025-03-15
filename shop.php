@@ -1,126 +1,135 @@
 <?php 
-        require_once "config.php";
-        $cnx = new connexion();
-        $pdo = $cnx->CNXbase();
-        try{
-            $stmt = $pdo->prepare("SELECT * FROM produits");
-            $stmt->execute();
-            $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);  
-            $jsonProduits = json_encode($produits);
-        
-            // Print to JavaScript console
-            echo "<script>console.log('Data received:', " . $jsonProduits . ");</script>";
-        
-        }catch(PDOException $e){
-            die("Erreur de base de données : " . $e->getMessage());
-        }
+require_once "config.php"; 
+$cnx = new connexion();
+$pdo = $cnx->CNXbase();
+
+$produit = null;
+$parPage = 9; // Nombre de produits par page
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? intval($_GET['page']) : 1;
+$start = ($page - 1) * $parPage;
+
+// Vérifier si on est sur la page d'un produit unique
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = intval($_GET['id']);
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM produits WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $produit = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Erreur de base de données : " . $e->getMessage());
+    }
+} else {
+    // Récupérer la liste des produits avec pagination
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM produits LIMIT :start, :parPage");
+        $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+        $stmt->bindParam(':parPage', $parPage, PDO::PARAM_INT);
+        $stmt->execute();
+        $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Erreur de base de données : " . $e->getMessage());
+    }
+}
+
+// Compter le nombre total de produits pour la pagination
+$totalProduits = $pdo->query("SELECT COUNT(*) FROM produits")->fetchColumn();
+$totalPages = ceil($totalProduits / $parPage);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
-    <title>Pharma &mdash; Colorlib Template</title>
-    <meta charset="utf-8">
+    <title><?= $produit ? htmlspecialchars($produit['nom']) . ' - Détails' : 'Boutique' ?></title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
-
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
-
-    <link rel="stylesheet" href="css/aos.css">
-
     <link rel="stylesheet" href="css/style.css">
-
 </head>
-
 <body>
 
-    <div class="site-wrap">
-
-
-        <div class="site-navbar py-2">
-
-            <div class="search-wrap">
-                <div class="container">
-                    <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
-                    <form action="#" method="post">
-                        <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
-                    </form>
-                </div>
-            </div>
-
-
-            <?php
-            require_once('header.php');
-            ?>
-        </div>
-    </div>
-    <div class="bg-light py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <strong
-                        class="text-black">Store</strong></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="site-section">
-        <div class="container">
-
-            <div class="row">
-            <?php if (!empty($produits)): ?>
-                        <?php foreach ($produits as $produit): ?>
-                        <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                            <span class="tag">Sale</span>
-                            <a href="shop-single.php" title="<?= htmlspecialchars($produit['description']) ?>">  
-                                <img src="get_image.php?id=<?=htmlspecialchars($produit['id']) ?>" alt="Image" style="width:180px; height:250px;"></a>
-                            <h3 class="text-dark"> <a href="shop-single.php"><?= htmlspecialchars($produit['nom']) ?></a></h3>
-                            <p class="price">prix :<?= htmlspecialchars($produit['prix']) ?> DT</p>
-                        </div>
-                        <?php endforeach; ?>
-                        <?php endif ?>
-                        </div>
+<div class="site-wrap">
+    <?php require_once('header.php'); ?>
 </div>
 
+<div class="bg-light py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> 
+                <strong class="text-black"><?= $produit ? 'Détails du Produit' : 'Boutique' ?></strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section">
+    <div class="container">
+
+        <?php if ($produit): ?>
+            <!-- Affichage du produit unique -->
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="get_image.php?id=<?= htmlspecialchars($produit['id']) ?>" alt="<?= htmlspecialchars($produit['nom']) ?>" style="width:100%;">
+                </div>
+                <div class="col-md-6">
+                    <h2><?= htmlspecialchars($produit['nom']) ?></h2>
+                    <p><?= htmlspecialchars($produit['description']) ?></p>
+                    <p class="price"><strong>Prix :</strong> <?= htmlspecialchars($produit['prix']) ?> DT</p>
+                    <a href="shop.php" class="btn btn-primary">Retour à la boutique</a>
+                </div>
+            </div>
+        <?php else: ?>
+            <!-- Affichage de la liste des produits -->
+            <h1 class="text-center">Boutique</h1>
+            <div class="row">
+                <?php foreach ($produits as $prod): ?>
+                    <div class="col-sm-6 col-lg-4 text-center item mb-4">
+                        <span class="tag">Promo</span>
+                        <a href="shop.php?id=<?= htmlspecialchars($prod['id']) ?>" title="<?= htmlspecialchars($prod['description']) ?>">  
+                            <img src="get_image.php?id=<?= htmlspecialchars($prod['id']) ?>" alt="Image" style="width:180px; height:250px;">
+                        </a>
+                        <h3 class="text-dark">
+                            <a href="shop.php?id=<?= htmlspecialchars($prod['id']) ?>"><?= htmlspecialchars($prod['nom']) ?></a>
+                        </h3>
+                        <p class="price">Prix : <?= htmlspecialchars($prod['prix']) ?> DT</p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Pagination Dynamique -->
             <div class="row mt-5">
                 <div class="col-md-12 text-center">
                     <div class="site-block-27">
                         <ul>
-                            <li><a href="#">&lt;</a></li>
-                            <li class="active"><span>1</span></li>
-                            <li><a href="shop2.php">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">&gt;</a></li>
+                            <?php if ($page > 1): ?>
+                                <li><a href="shop.php?page=<?= $page - 1 ?>">&lt;</a></li>
+                            <?php endif; ?>
+                            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                                <li <?= $i == $page ? 'class="active"' : '' ?>>
+                                    <a href="shop.php?page=<?= $i ?>"><?= $i ?></a>
+                                </li>
+                            <?php endfor; ?>
+                            <?php if ($page < $totalPages): ?>
+                                <li><a href="shop.php?page=<?= $page + 1 ?>">&gt;</a></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
+
+        <?php endif; ?>
+
     </div>
+</div>
 
+<?php require_once "footer.php" ?>
 
-    <?php require_once "footer.php" ?>
-    </div>
-
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/aos.js"></script>
-
-    <script src="js/main.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 
 </body>
-
 </html>

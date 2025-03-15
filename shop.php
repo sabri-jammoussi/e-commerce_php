@@ -80,6 +80,19 @@ $totalPages = ceil($totalProduits / $parPage);
                     <p class="price"><strong>Prix :</strong> <?= htmlspecialchars($produit['prix']) ?> DT</p>
                     <a href="shop.php" class="btn btn-primary">Retour à la boutique</a>
                 </div>
+                <form method="post" action="ajouter_panier.php">
+    <input type="hidden" name="id" value="<?= htmlspecialchars($produit['id']) ?>">
+    <input type="hidden" name="nom" value="<?= htmlspecialchars($produit['nom']) ?>">
+    <input type="hidden" name="prix" value="<?= htmlspecialchars($produit['prix']) ?>">
+
+    <div class="form-group">
+        <label for="quantite">Quantité :</label>
+        <input type="number" name="quantite" id="quantite" class="form-control" value="1" min="1" max="100">
+    </div>
+
+    <button type="submit" name="ajouter_panier" class="btn btn-success">🛒 Ajouter au panier</button>
+    <button type="submit" name="commander" class="btn btn-primary">🛍️ Commander</button>
+</form>
             </div>
         <?php else: ?>
             <!-- Affichage de la liste des produits -->

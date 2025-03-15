@@ -39,35 +39,34 @@ require_once("config.php")
                     <div class="main-nav d-none d-lg-block">
                         <nav class="site-navigation text-right text-md-center" role="navigation">
                             <ul class="site-menu js-clone-nav d-none d-lg-block">
-                            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "client") : ?>
-                                <li class=""><a href="index.php">Home</a></li>
-                                <li><a href="shop.php">Store</a></li>
-                                <li class="has-children">
-                                    <a href="#">Dropdown</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Supplements</a></li>
-                                        <li class="has-children">
-                                            <a href="#">Vitamins</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Supplements</a></li>
-                                                <li><a href="#">Vitamins</a></li>
-                                                <li><a href="#">Diet &amp; Nutrition</a></li>
-                                                <li><a href="#">Tea &amp; Coffee</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Diet &amp; Nutrition</a></li>
-                                        <li><a href="#">Tea &amp; Coffee</a></li>
+                                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "client") : ?>
+                                    <li class=""><a href="index.php">Home</a></li>
+                                    <li><a href="shop.php">Store</a></li>
+                                    <li class="has-children">
+                                        <a href="#">Dropdown</a>
+                                        <ul class="dropdown">
+                                            <li><a href="#">Supplements</a></li>
+                                            <li class="has-children">
+                                                <a href="#">Vitamins</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="#">Supplements</a></li>
+                                                    <li><a href="#">Vitamins</a></li>
+                                                    <li><a href="#">Diet &amp; Nutrition</a></li>
+                                                    <li><a href="#">Tea &amp; Coffee</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Diet &amp; Nutrition</a></li>
+                                            <li><a href="#">Tea &amp; Coffee</a></li>
 
-                                    </ul>
-                                </li>
-                
-
-                                <li><a href="about.php">About</a></li>
-                                <li><a href="contact.php">Contact</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="about.php">About</a></li>
+                                    <li><a href="contact.php">Contact</a></li>
                                 <?php endif; ?>
 
                                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") : ?>
-                                <li><a href="listeClient.php">Liste des clients</a></li>
+                                    <li><a href="listeProduit.php">Liste des produits</a></li>
+                                    <li><a href="listeClient.php">Liste des clients</a></li>
                                 <?php endif; ?>
                             </ul>
                         </nav>
@@ -86,7 +85,7 @@ require_once("config.php")
                     </div>
                     <div class="dropdown">
                         <a href="" class="icons-btn d-inline-block " id="userDropdown" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="true" title="<?= $_SESSION["inscription"]?>">
+                            aria-haspopup="true" aria-expanded="true" title="<?= $_SESSION["inscription"] ?>">
                             <span class="icon-user" style="font-size: 20px;"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">

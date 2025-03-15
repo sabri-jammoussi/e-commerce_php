@@ -58,8 +58,12 @@ require_once("config.php")
 
                                     </ul>
                                 </li>
+                                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "client") : ?>
+
                                 <li><a href="about.php">About</a></li>
                                 <li><a href="contact.php">Contact</a></li>
+                                <?php endif; ?>
+
                                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") : ?>
                                 <li><a href="listeClient.php">Liste des clients</a></li>
                                 <?php endif; ?>
@@ -80,7 +84,7 @@ require_once("config.php")
                     </div>
                     <div class="dropdown">
                         <a href="" class="icons-btn d-inline-block " id="userDropdown" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="true">
+                            aria-haspopup="true" aria-expanded="true" title="<?= $_SESSION["inscription"]?>">
                             <span class="icon-user" style="font-size: 20px;"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">

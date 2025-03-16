@@ -1,17 +1,16 @@
-<?php 
-    require_once "config.php";
+<?php
+require_once "config.php";
 $cnx = new connexion();
 $pdo = $cnx->CNXbase();
-try{
+try {
     $stmt = $pdo->prepare("SELECT * FROM produits");
     $stmt->execute();
-    $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+    $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $jsonProduits = json_encode($produits);
 
     // Print to JavaScript console
     echo "<script>console.log('Data received:', " . $jsonProduits . ");</script>";
-
-}catch(PDOException $e){
+} catch (PDOException $e) {
     die("Erreur de base de données : " . $e->getMessage());
 }
 ?>
@@ -59,91 +58,94 @@ try{
 
 
             <!DOCTYPE html>
-<html lang="en">
+            <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharma - Dynamic Background</title>
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/style.css">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Pharma - Dynamic Background</title>
+                <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i"
+                    rel="stylesheet">
+                <link rel="stylesheet" href="fonts/icomoon/style.css">
+                <link rel="stylesheet" href="css/bootstrap.min.css">
+                <link rel="stylesheet" href="css/magnific-popup.css">
+                <link rel="stylesheet" href="css/jquery-ui.css">
+                <link rel="stylesheet" href="css/owl.carousel.min.css">
+                <link rel="stylesheet" href="css/owl.theme.default.min.css">
+                <link rel="stylesheet" href="css/aos.css">
+                <link rel="stylesheet" href="css/style.css">
 
-    <style>
-        #hero-section {
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            transition: background-image 1s ease-in-out;
-        }
-    </style>
-</head><body>
-    <div class="site-wrap">
-        <!-- Hero Section with Dynamic Background -->
-        <div class="site-blocks-cover" id="hero-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
-                        <div class="site-block-cover-content text-center">
-                            <h1>Welcome To Pharma</h1>
-                            <p>
-                                <a href="shop.php" class="btn btn-primary px-5 py-3">Shop Now</a>
-                            </p>
+                <style>
+                #hero-section {
+                    height: 100vh;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    transition: background-image 1s ease-in-out;
+                }
+                </style>
+            </head>
+
+            <body>
+                <div class="site-wrap">
+                    <!-- Hero Section with Dynamic Background -->
+                    <div class="site-blocks-cover" id="hero-section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+                                    <div class="site-block-cover-content text-center">
+                                        <h1>Welcome To Pharma</h1>
+                                        <p>
+                                            <a href="shop.php" class="btn btn-primary px-5 py-3">Shop Now</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <!-- End Hero Section -->
                 </div>
-            </div>
-        </div>
-        <!-- End Hero Section -->
-    </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Liste des images
-            const images = [
-                "svr.png",
-                "filorga.png",
-                "sisderma.png",
-                "avene.png",
-                "nuxe.png"
-            ];
+                <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Liste des images
+                    const images = [
+                        "svr.png",
+                        "filorga.png",
+                        "sisderma.png",
+                        "avene.png",
+                        "nuxe.png"
+                    ];
 
-            let index = 0;
-            const heroSection = document.getElementById("hero-section");
+                    let index = 0;
+                    const heroSection = document.getElementById("hero-section");
 
-            // Fonction pour changer l'arrière-plan
-            function changeBackground() {
-                index = (index + 1) % images.length;
-                heroSection.style.backgroundImage = `url('${images[index]}')`;
-            }
+                    // Fonction pour changer l'arrière-plan
+                    function changeBackground() {
+                        index = (index + 1) % images.length;
+                        heroSection.style.backgroundImage = `url('${images[index]}')`;
+                    }
 
-            // Afficher immédiatement une image dès le chargement
-            heroSection.style.backgroundImage = `url('${images[index]}')`;
+                    // Afficher immédiatement une image dès le chargement
+                    heroSection.style.backgroundImage = `url('${images[index]}')`;
 
-            // Change toutes les 5 secondes
-            setInterval(changeBackground, 7000);
-        });
-    </script>
+                    // Change toutes les 5 secondes
+                    setInterval(changeBackground, 7000);
+                });
+                </script>
 
-    <!-- Bootstrap JS and jQuery (required for Bootstrap) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+                <!-- Bootstrap JS and jQuery (required for Bootstrap) -->
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+            </body>
 
 
 
 
-</html>
+            </html>
 
             <div class="site-section">
-               
+
             </div>
 
             <div class="site-section">
@@ -155,12 +157,14 @@ try{
                     </div>
 
                     <div class="row">
-                    <?php if (!empty($produits)): ?>
+                        <?php if (!empty($produits)): ?>
                         <?php foreach ($produits as $produit): ?>
                         <div class="col-sm-6 col-lg-4 text-center item mb-4">
                             <span class="tag">Sale</span>
-                             <img src="get_image.php?id=<?=htmlspecialchars($produit['id']) ?>" alt="Image" style="width:180px; height:250px;">
-                            <h3 class="text-dark"> <a href="shop-single.php"><?= htmlspecialchars($produit['nom']) ?></a></h3>
+                            <img src="get_image.php?id=<?= htmlspecialchars($produit['id']) ?>" alt="Image"
+                                style="width:180px; height:250px;">
+                            <h3 class="text-dark"> <a
+                                    href="shop-single.php"><?= htmlspecialchars($produit['nom']) ?></a></h3>
                             <p class="price">prix :<?= htmlspecialchars($produit['prix']) ?> DT</p>
                         </div>
                         <?php endforeach; ?>
@@ -177,29 +181,35 @@ try{
 
             <div class="site-section bg-light">
                 <div class="container">
-                <div class="row">
-            <div class="title-section text-center col-12">
-                <h2 class="text-uppercase">New Products</h2>
-            </div>
-        </div>
-        <div class="row">
-    <div class="col-md-12 block-3 products-wrap">
-        <div class="nonloop-block-3 owl-carousel">
-            <?php if (!empty($produits)): ?>
-                <?php foreach ($produits as $produit): ?>
-                    <div class="d-flex flex-column align-items-center text-center item mb-4">
-                       
-                        <h3 class="text-dark mt-2">
-                           
-                        </h3>
-                        <p class="price font-weight-bold"><?= htmlspecialchars($produit['prix']) ?> DT</p>
+                    <div class="row">
+                        <div class="title-section text-center col-12">
+                            <h2 class="text-uppercase">New Products</h2>
+                        </div>
                     </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-    </div>
-    
-</div>
+                    <div class="row">
+                        <div class="col-md-12 block-3 products-wrap">
+                            <div class="nonloop-block-3 owl-carousel">
+                                <?php if (!empty($produits)): ?>
+                                <?php foreach ($produits as $produit): ?>
+                                <div class="d-flex flex-column align-items-center text-center item mb-4">
+
+                                    <a href="shop-single.php?id=<?= htmlspecialchars($produit['id']) ?>">
+                                        <img src="get_image.php?id=<?= htmlspecialchars($produit['id']) ?>" alt="Image"
+                                            class="img-fluid" style="max-width: 150px; height: 200px;">
+                                    </a>
+                                    <h3 class="text-dark mt-2">
+                                        <a href="shop-single.php?id=<?= htmlspecialchars($produit['id']) ?>">
+                                            <?= htmlspecialchars($produit['nom']) ?>
+                                        </a>
+                                    </h3>
+                                    <p class="price font-weight-bold"><?= htmlspecialchars($produit['prix']) ?> DT</p>
+                                </div>
+                                <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                    </div>
 
                 </div>
             </div>
@@ -209,11 +219,11 @@ try{
                     <div class="row">
                         <div class="title-section text-center col-12">
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
 
-  <?php require_once "footer.php"; ?>
+            <?php require_once "footer.php"; ?>
         </div>
 
         <script src="js/jquery-3.3.1.min.js"></script>

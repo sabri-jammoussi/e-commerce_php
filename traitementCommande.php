@@ -26,10 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $adresse = $_POST['adresse'];
     $email = $_POST['email'];
     $produit = $_POST['produit']; // ID du produit sélectionné
-    $quantite = $_POST['quantite'];
-
+    $total_commande = $_SESSION['total_commande'] ?? 0;
     try {
-        $sql = "INSERT INTO commandes (nom, prenom, telephone, adresse, email, id, quantite) VALUES (:nom, :prenom, :telephone, :adresse, :email, :produit, :quantite)";
+        $sql = "INSERT INTO commandes (nom, prenom, telephone, adresse, email, id, total) VALUES (:nom, :prenom, :telephone, :adresse, :email, :produit, :total)";
         $stmt = $con->prepare($sql);
         $stmt->execute([
             ':nom' => $nom,
@@ -38,10 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ':adresse' => $adresse,
             ':email' => $email,
             ':produit' => $produit,
-            ':quantite' => $quantite
+            ':total' => $total_commande
         ]);
 
         $_SESSION['message'] = "<div class='alert alert-success'>Merci d'avoir commandé !</div>";
+        $_SESSION['panier'] = [];
+
         header("Location: confirmation.php");
         exit();
     } catch (PDOException $e) {
@@ -90,11 +91,12 @@ include "header.php"
                 <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="mb-3">
-             
+
             </div>
             <div class="mb-3">
-                <label for="quantite" class="form-label">Quantité</label>
-                <input type="number" class="form-control" id="quantite" name="quantite" required>
+                <label for="quantite" class="form-label">Total prix</label>
+                <input type="number" class="form-control" id="quantite" name="quantite"
+                    value="<?= $_SESSION['total_commande'] ?>" disabled>
             </div>
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-success">Commander</button>

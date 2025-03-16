@@ -26,8 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     } else {
         // Redirige vers le panier après ajout
-        header("Location: panier.php");
+        header("Location: cart.php");
         exit;
     }
 }
-?>

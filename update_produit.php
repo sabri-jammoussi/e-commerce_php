@@ -10,8 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $prix = $_POST['prix'];
 
     try {
-        // Check if a new image is uploaded
         if (!empty($_FILES['image']['tmp_name'])) {
+            echo "<script>console.log('Data received:');</script>";
+
             $imageData = file_get_contents($_FILES['image']['tmp_name']);
             $stmt = $pdo->prepare("UPDATE produits SET nom=?, description=?, prix=?, image=? WHERE id=?");
             $stmt->execute([$nom, $description, $prix, $imageData, $id]);
@@ -20,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute([$nom, $description, $prix, $id]);
         }
 
-        header("Location: listeProduit.php?success=update");
+        header("Location: listeProduit.php");
         exit();
     } catch (PDOException $e) {
         die("Erreur de mise à jour : " . $e->getMessage());

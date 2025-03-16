@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nom = $_POST['nom'];
     $description = $_POST['description'];
     $prix = $_POST['prix'];
+    $stock = $_POST['stock'];
 
     // Handle file upload for image
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
@@ -17,10 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Insert the product into the database
         try {
-            $stmt = $pdo->prepare("INSERT INTO produits (nom, description, prix, image) VALUES (:nom, :description, :prix, :image)");
+            $stmt = $pdo->prepare("INSERT INTO produits (nom, description, prix,stock, image) VALUES (:nom, :description, :prix,:stock, :image)");
             $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':description', $description);
             $stmt->bindParam(':prix', $prix);
+            $stmt->bindParam(':stock', $stock);
             $stmt->bindParam(':image', $imageData, PDO::PARAM_LOB); // Bind as BLOB
 
             if ($stmt->execute()) {

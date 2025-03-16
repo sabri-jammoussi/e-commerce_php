@@ -33,42 +33,42 @@ try {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
-    table {
-        table-layout: fixed;
-        width: 100%;
-    }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
 
-    th:nth-child(1),
-    td:nth-child(1) {
-        width: 20%;
-    }
+        th:nth-child(1),
+        td:nth-child(1) {
+            width: 20%;
+        }
 
-    /* Nom */
-    th:nth-child(2),
-    td:nth-child(2) {
-        width: 20%;
-    }
+        /* Nom */
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 20%;
+        }
 
-    /* Prénom */
-    th:nth-child(3),
-    td:nth-child(3) {
-        width: 30%;
-    }
+        /* Prénom */
+        th:nth-child(3),
+        td:nth-child(3) {
+            width: 30%;
+        }
 
-    /* Email */
-    th:nth-child(4),
-    td:nth-child(4) {
-        width: 15%;
-    }
+        /* Email */
+        th:nth-child(4),
+        td:nth-child(4) {
+            width: 15%;
+        }
 
-    /* Rôle */
-    th:nth-child(5),
-    td:nth-child(5) {
-        width: 15%;
-        text-align: center;
-    }
+        /* Rôle */
+        th:nth-child(5),
+        td:nth-child(5) {
+            width: 15%;
+            text-align: center;
+        }
 
-    /* Actions */
+        /* Actions */
     </style>
 </head>
 
@@ -84,44 +84,47 @@ try {
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
-                    <th>Nom</th>
-                    <th>description</th>
-                    <th>Prix</th>
-                    <th>image</th>
+                    <th> Nom</th>
+                    <th style="width: 300px;">description</th>
+                    <th style="width: 130px;">Prix</th>
+                    <th style="width: 130px;">Stock</th>
+                    <th style="width: 230px;">image</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if (!empty($produits)): ?>
-                <?php foreach ($produits as $produit): ?>
-                <tr>
-                    <td><?= htmlspecialchars($produit['nom']) ?></td>
-                    <td><?= htmlspecialchars($produit['description']) ?></td>
-                    <td><?= htmlspecialchars($produit['prix']) ?></td>
-                    <td><img src='get_image.php?id=<?= htmlspecialchars($produit['id']) ?>' alt='Image'
-                            style="width:140px; height:120px;">
-                    </td>
-                    <td>
-                        <button class="btn btn-sm edit-btn" data-id="<?= $produit['id'] ?>"
-                            data-nom="<?= htmlspecialchars($produit['nom']) ?>"
-                            data-prenom="<?= htmlspecialchars($produit['description']) ?>"
-                            data-email="<?= htmlspecialchars($produit['prix']) ?>" data-image="" data-bs-toggle="modal"
-                            data-bs-target="#editModal">
-                            <i class="fas fa-edit" style="color: #ffcc00;"></i> <!-- Custom yellow -->
-                        </button>
+                    <?php foreach ($produits as $produit): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($produit['nom']) ?></td>
+                            <td><?= htmlspecialchars($produit['description']) ?></td>
+                            <td><?= htmlspecialchars($produit['prix']) ?></td>
+                            <td><?= htmlspecialchars($produit['stock']) ?></td>
+                            <td><img src='get_image.php?id=<?= htmlspecialchars($produit['id']) ?>' alt='Image'
+                                    style="width:140px; height:120px;">
+                            </td>
+                            <td>
+                                <button class="btn btn-sm edit-btn" data-id="<?= $produit['id'] ?>"
+                                    data-nom="<?= htmlspecialchars($produit['nom']) ?>"
+                                    data-prenom="<?= htmlspecialchars($produit['description']) ?>"
+                                    data-stock="<?= htmlspecialchars($produit['stock']) ?>"
+                                    data-email="<?= htmlspecialchars($produit['prix']) ?>" data-image="" data-bs-toggle="modal"
+                                    data-bs-target="#editModal">
+                                    <i class="fas fa-edit" style="color: #ffcc00;"></i> <!-- Custom yellow -->
+                                </button>
 
-                        <button class="btn btn-sm delete-btn" data-id="<?= $produit['id'] ?>"
-                            data-nom="<?= htmlspecialchars($produit['nom']) ?>" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal">
-                            <i class="fas fa-trash" style="color: #e74c3c;"></i> <!-- Custom red -->
-                        </button>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
+                                <button class="btn btn-sm delete-btn" data-id="<?= $produit['id'] ?>"
+                                    data-nom="<?= htmlspecialchars($produit['nom']) ?>" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
+                                    <i class="fas fa-trash" style="color: #e74c3c;"></i> <!-- Custom red -->
+                                </button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 <?php else: ?>
-                <tr>
-                    <td colspan="5" class="text-center text-danger">Aucun produit trouvé</td>
-                </tr>
+                    <tr>
+                        <td colspan="5" class="text-center text-danger">Aucun produit trouvé</td>
+                    </tr>
                 <?php endif; ?>
             </tbody>
         </table>
@@ -130,15 +133,15 @@ try {
                 <div class="site-block-27">
                     <ul>
                         <?php if ($page > 1): ?>
-                        <li><a href="listeProduit.php?page=<?= $page - 1 ?>">&lt;</a></li>
+                            <li><a href="listeProduit.php?page=<?= $page - 1 ?>">&lt;</a></li>
                         <?php endif; ?>
                         <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                        <li <?= $i == $page ? 'class="active"' : '' ?>>
-                            <a href="listeProduit.php?page=<?= $i ?>"><?= $i ?></a>
-                        </li>
+                            <li <?= $i == $page ? 'class="active"' : '' ?>>
+                                <a href="listeProduit.php?page=<?= $i ?>"><?= $i ?></a>
+                            </li>
                         <?php endfor; ?>
                         <?php if ($page < $totalPages): ?>
-                        <li><a href="listeProduit.php?page=<?= $page + 1 ?>">&gt;</a></li>
+                            <li><a href="listeProduit.php?page=<?= $page + 1 ?>">&gt;</a></li>
                         <?php endif; ?>
                     </ul>
                 </div>
@@ -166,6 +169,10 @@ try {
                         <div class="mb-3">
                             <label for="add-prix" class="form-label">Prix</label>
                             <input type="number" class="form-control" name="prix" id="add-prix" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="add-stock" class="form-label">stock</label>
+                            <input type="number" class="form-control" name="stock" id="add-stock" required>
                         </div>
                         <div class="mb-3">
                             <label for="add-image" class="form-label">Image</label>
@@ -205,6 +212,10 @@ try {
                             <input type="number" class="form-control" name="prix" id="edit-email">
                         </div>
                         <div class="mb-3">
+                            <label for="edit-stock" class="form-label">stock</label>
+                            <input type="number" class="form-control" name="stock" id="edit-stock" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="edit-image" class="form-label">Image</label>
                             <input type="file" class="form-control" name="image" id="edit-image">
                         </div>
@@ -242,39 +253,43 @@ try {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Gestion du bouton d'ajout
-        document.getElementById(".add-btn").addEventListener("show.bs.modal", function() {
-            document.getElementById("add-nom").value = "";
-            document.getElementById("add-description").value = "";
-            document.getElementById("add-prix").value = "";
-        });
-    });
-
-
-    document.addEventListener("DOMContentLoaded", function() {
-        // Handle edit button click
-        document.querySelectorAll(".edit-btn").forEach(button => {
-            button.addEventListener("click", function() {
-                document.getElementById("edit-id").value = this.dataset.id;
-                document.getElementById("edit-nom").value = this.dataset.nom;
-                document.getElementById("edit-prenom").value = this.dataset.prenom;
-                document.getElementById("edit-email").value = this.dataset.email;
-                document.getElementById("edit-role").value = this.dataset.role;
+        document.addEventListener("DOMContentLoaded", function() {
+            // Gestion du bouton d'ajout
+            document.getElementById(".add-btn").addEventListener("show.bs.modal", function() {
+                document.getElementById("add-nom").value = "";
+                document.getElementById("add-description").value = "";
+                document.getElementById("add-prix").value = "";
+                document.getElementById("add-stock").value = "";
             });
         });
-        document.getElementById("edit-image").addEventListener("change", function(event) {
-            console.log("Selected file: ", event.target.files[0]);
-        });
 
-        // Handle delete button click
-        document.querySelectorAll(".delete-btn").forEach(button => {
-            button.addEventListener("click", function() {
-                document.getElementById("delete-id").value = this.dataset.id;
-                document.getElementById("delete-user-name").textContent = this.dataset.nom;
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Handle edit button click
+            document.querySelectorAll(".edit-btn").forEach(button => {
+                button.addEventListener("click", function() {
+                    console.log("dataaaaa", this.dataset.stock)
+                    document.getElementById("edit-stock").value = this.dataset.stock;
+                    document.getElementById("edit-id").value = this.dataset.id;
+                    document.getElementById("edit-nom").value = this.dataset.nom;
+                    document.getElementById("edit-prenom").value = this.dataset.prenom;
+                    document.getElementById("edit-email").value = this.dataset.email;
+                    document.getElementById("edit-role").value = this.dataset.role;
+
+                });
+            });
+            document.getElementById("edit-image").addEventListener("change", function(event) {
+                console.log("Selected file: ", event.target.files[0]);
+            });
+
+            // Handle delete button click
+            document.querySelectorAll(".delete-btn").forEach(button => {
+                button.addEventListener("click", function() {
+                    document.getElementById("delete-id").value = this.dataset.id;
+                    document.getElementById("delete-user-name").textContent = this.dataset.nom;
+                });
             });
         });
-    });
     </script>
 </body>
 

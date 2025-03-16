@@ -42,24 +42,6 @@ require_once("config.php")
                                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "client") : ?>
                                     <li class=""><a href="index.php">Home</a></li>
                                     <li><a href="shop.php">Store</a></li>
-                                    <li class="has-children">
-                                        <a href="#">Dropdown</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Supplements</a></li>
-                                            <li class="has-children">
-                                                <a href="#">Vitamins</a>
-                                                <ul class="dropdown">
-                                                    <li><a href="#">Supplements</a></li>
-                                                    <li><a href="#">Vitamins</a></li>
-                                                    <li><a href="#">Diet &amp; Nutrition</a></li>
-                                                    <li><a href="#">Tea &amp; Coffee</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Diet &amp; Nutrition</a></li>
-                                            <li><a href="#">Tea &amp; Coffee</a></li>
-
-                                        </ul>
-                                    </li>
                                     <li><a href="about.php">About</a></li>
                                     <li><a href="contact.php">Contact</a></li>
                                 <?php endif; ?>
@@ -71,18 +53,21 @@ require_once("config.php")
                             </ul>
                         </nav>
                     </div>
-                    <div class="icons">
-                        <a href="#" class="icons-btn d-inline-block js-search-open">
-                            <span class="icon-search"></span>
-                        </a>
-                        <a href="cart.php" class="icons-btn d-inline-block bag">
-                            <span class="icon-shopping-bag"></span>
-                            <span class="number">25</span>
-                        </a>
-                        <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none">
-                            <span class="icon-menu"></span>
-                        </a>
-                    </div>
+                    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "client") : ?>
+
+                        <div class="icons">
+                            <a href="#" class="icons-btn d-inline-block js-search-open">
+                                <span class="icon-search"></span>
+                            </a>
+                            <a href="cart.php" class="icons-btn d-inline-block bag">
+                                <span class="icon-shopping-bag"></span>
+                                <span class="number">25</span>
+                            </a>
+                            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none">
+                                <span class="icon-menu"></span>
+                            </a>
+                        </div>
+                    <?php endif; ?>
                     <div class="dropdown">
                         <a href="" class="icons-btn d-inline-block " id="userDropdown" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="true" title="<?= $_SESSION["inscription"] ?>">

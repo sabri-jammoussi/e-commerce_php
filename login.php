@@ -31,7 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $_SESSION["role"] = $row["role"];
                         //  echo "<script>console.log('This is a message from PHP! pass input', '" . $_SESSION["inscription"] . "');</script>";
                         $_SESSION["role"] = $row["role"] ?? '';
-                        header('Location: index.php');
+                        if ($row['role'] == "client") {
+                            header('Location: index.php');
+                        } else {
+                            header('Location: listeProduit.php');
+                        }
                         exit();
                     } else {
                         $error[] = "Mot de passe incorrect.";

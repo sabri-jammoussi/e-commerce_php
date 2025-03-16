@@ -84,7 +84,7 @@ try {
                             <td><?= htmlspecialchars($produit['description']) ?></td>
                             <td><?= htmlspecialchars($produit['prix']) ?></td>
                             <td><img src='get_image.php?id=<?= htmlspecialchars($produit['id']) ?>' alt='Image'
-                                    style="width:120px; height:100px;">
+                                    style="width:140px; height:120px;">
                             </td>
                             <td>
                                 <button class="btn btn-sm edit-btn" data-id="<?= $produit['id'] ?>"
@@ -120,7 +120,7 @@ try {
                     <h5 class="modal-title" id="editModalLabel">Modifier le produit</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="update_produit.php" method="POST">
+                <form action="update_produit.php" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         <input type="hidden" name="id" id="edit-id">
                         <div class="mb-3">
@@ -183,6 +183,9 @@ try {
                     document.getElementById("edit-email").value = this.dataset.email;
                     document.getElementById("edit-role").value = this.dataset.role;
                 });
+            });
+            document.getElementById("edit-image").addEventListener("change", function(event) {
+                console.log("Selected file: ", event.target.files[0]);
             });
 
             // Handle delete button click

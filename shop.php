@@ -40,9 +40,11 @@ $totalPages = ceil($totalProduits / $parPage);
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title><?= $produit ? htmlspecialchars($produit['nom']) . ' - Détails' : 'Boutique' ?></title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez notre boutique en ligne avec une large sélection de produits.">
+    <meta name="author" content="Nom de l'auteur">
+    <title><?= $produit ? htmlspecialchars($produit['nom']) . ' - Détails' : 'Boutique' ?></title>
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -72,7 +74,7 @@ $totalPages = ceil($totalProduits / $parPage);
             <!-- Affichage du produit unique -->
             <div class="row">
                 <div class="col-md-6">
-                    <img src="get_image.php?id=<?= htmlspecialchars($produit['id']) ?>" alt="<?= htmlspecialchars($produit['nom']) ?>" style="width:100%;">
+                    <img src="get_image.php?id=<?= htmlspecialchars($produit['id']) ?>" alt="<?= htmlspecialchars($produit['nom']) ?>" style="width:100%;" class="img-fluid">
                 </div>
                 <div class="col-md-6">
                     <h2><?= htmlspecialchars($produit['nom']) ?></h2>
@@ -80,20 +82,37 @@ $totalPages = ceil($totalProduits / $parPage);
                     <p class="price"><strong>Prix :</strong> <?= htmlspecialchars($produit['prix']) ?> DT</p>
                     <a href="shop.php" class="btn btn-primary">Retour à la boutique</a>
                 </div>
-                <form method="post" action="ajouter_panier.php">
-    <input type="hidden" name="id" value="<?= htmlspecialchars($produit['id']) ?>">
-    <input type="hidden" name="nom" value="<?= htmlspecialchars($produit['nom']) ?>">
-    <input type="hidden" name="prix" value="<?= htmlspecialchars($produit['prix']) ?>">
-
-    <div class="form-group">
-        <label for="quantite">Quantité :</label>
-        <input type="number" name="quantite" id="quantite" class="form-control" value="1" min="1" max="100">
-    </div>
-
-    <button type="submit" name="ajouter_panier" class="btn btn-success">🛒 Ajouter au panier</button>
-    <button type="submit" name="commander" class="btn btn-primary">🛍️ Commander</button>
-</form>
             </div>
+
+            <!-- Formulaire Ajouter au panier -->
+            <form method="post" action="ajouter_panier.php" class="d-flex align-items-center mt-4">
+                <!-- Produits cachés -->
+                <input type="hidden" name="id" value="<?= htmlspecialchars($produit['id']) ?>">
+                <input type="hidden" name="nom" value="<?= htmlspecialchars($produit['nom']) ?>">
+                <input type="hidden" name="prix" value="<?= htmlspecialchars($produit['prix']) ?>">
+
+                <!-- Affichage de l'image du produit -->
+                <div class="me-3">
+                    <img src="<?= htmlspecialchars($produit['image_url']) ?>" alt="<?= htmlspecialchars($produit['nom']) ?>" class="img-thumbnail" style="width: 100px; height: auto;">
+                </div>
+
+                <!-- Quantité -->
+                <div class="form-group me-3">
+                    <label for="quantite" class="form-label">Quantité :</label>
+                    <input type="number" name="quantite" id="quantite" class="form-control" value="1" min="1" max="100" style="width: 60px;">
+                </div>
+
+                <!-- Bouton Ajouter au panier -->
+                <div class="form-group me-2">
+                    <button type="submit" name="ajouter_panier" class="btn btn-success btn-sm">🛒 Ajouter au panier</button>
+                </div>
+
+                <!-- Bouton Passer commande -->
+                <div class="form-group">
+                    <a href="traitementCommande.php" class="btn btn-primary btn-sm">✅ Passer commande</a>
+                </div>
+            </form>
+
         <?php else: ?>
             <!-- Affichage de la liste des produits -->
             <h1 class="text-center">Boutique</h1>
@@ -102,7 +121,7 @@ $totalPages = ceil($totalProduits / $parPage);
                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
                         <span class="tag">Promo</span>
                         <a href="shop.php?id=<?= htmlspecialchars($prod['id']) ?>" title="<?= htmlspecialchars($prod['description']) ?>">  
-                            <img src="get_image.php?id=<?= htmlspecialchars($prod['id']) ?>" alt="Image" style="width:180px; height:250px;">
+                            <img src="get_image.php?id=<?= htmlspecialchars($prod['id']) ?>" alt="<?= htmlspecialchars($prod['nom']) ?>" class="img-fluid" style="width:180px; height:250px;">
                         </a>
                         <h3 class="text-dark">
                             <a href="shop.php?id=<?= htmlspecialchars($prod['id']) ?>"><?= htmlspecialchars($prod['nom']) ?></a>

@@ -94,7 +94,7 @@ try{
                         <div class="site-block-cover-content text-center">
                             <h1>Welcome To Pharma</h1>
                             <p>
-                                <a href="traitementCommande.php" class="btn btn-primary px-5 py-3">Shop Now</a>
+                                <a href="shop.php" class="btn btn-primary px-5 py-3">Shop Now</a>
                             </p>
                         </div>
                     </div>

@@ -21,15 +21,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $telephone = $_POST['telephone'];
+    $adresse = $_POST['adresse'];
     $email = $_POST['email'];
     $produit = $_POST['produit']; // ID du produit sélectionné
     $quantite = $_POST['quantite'];
 
     try {
-        $sql = "INSERT INTO commandes (nom, email, id, quantite) VALUES (:nom, :email, :produit, :quantite)";
+        $sql = "INSERT INTO commandes (nom, prenom, telephone, adresse, email, id, quantite) VALUES (:nom, :prenom, :telephone, :adresse, :email, :produit, :quantite)";
         $stmt = $con->prepare($sql);
         $stmt->execute([
             ':nom' => $nom,
+            ':prenom' => $prenom,
+            ':telephone' => $telephone,
+            ':adresse' => $adresse,
             ':email' => $email,
             ':produit' => $produit,
             ':quantite' => $quantite
@@ -53,9 +59,8 @@ include "header.php"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commander un produit</title>
+    <title>Passer une commande</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 
 <body class="bg-light">
@@ -69,17 +74,23 @@ include "header.php"
                 <input type="text" class="form-control" id="nom" name="nom" required>
             </div>
             <div class="mb-3">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="prenom" name="prenom" required>
+            </div>
+            <div class="mb-3">
+                <label for="telephone" class="form-label">Numéro de téléphone</label>
+                <input type="tel" class="form-control" id="telephone" name="telephone" required>
+            </div>
+            <div class="mb-3">
+                <label for="adresse" class="form-label">Adresse</label>
+                <input type="text" class="form-control" id="adresse" name="adresse" required>
+            </div>
+            <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="mb-3">
-                <label for="produit" class="form-label">Produit</label>
-                <select class="form-control" id="produit" name="produit" required>
-                    <option value="">Sélectionner un produit</option>
-                    <?php foreach ($produits as $produit) : ?>
-                        <option value="<?= $produit['id'] ?>"><?= htmlspecialchars($produit['nom']) ?></option>
-                    <?php endforeach; ?>
-                </select>
+             
             </div>
             <div class="mb-3">
                 <label for="quantite" class="form-label">Quantité</label>

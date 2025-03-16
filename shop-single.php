@@ -41,13 +41,11 @@
                     <form action="#" method="post">
                         <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
                     </form>
-                    
                 </div>
             </div>
 
             <?php require_once "header.php"; ?>
         </div>
-        
 
         <div class="bg-light py-3">
 
